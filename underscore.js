@@ -489,6 +489,9 @@
   // Aliased as `unique`.
   _.uniq = _.unique = function(array, isSorted, iterator, context) {
     if (array == null) return [];
+    if (_.isString(isSorted)) {
+      isSorted = _.property(isSorted);
+    }
     if (_.isFunction(isSorted)) {
       context = iterator;
       iterator = isSorted;
